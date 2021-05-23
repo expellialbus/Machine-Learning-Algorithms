@@ -1,7 +1,7 @@
 import os 
 
-def get_parent_dir(n=1):
-    current_path = os.path.abspath(__file__)
+def get_parent_dir(n=0):
+    current_path = os.path.dirname(os.path.abspath(__file__))
 
     for _ in range(n):
         current_path = os.path.dirname(current_path)
@@ -10,5 +10,5 @@ def get_parent_dir(n=1):
 
 os.sys.path.append(get_parent_dir())
 
-from GradientDescent import BatchGradientDescent
-from GradientDescent import StochasticGradientDescent
+from BatchGradientDescent import BatchGradientDescent
+from StochasticGradientDescent import StochasticGradientDescent
