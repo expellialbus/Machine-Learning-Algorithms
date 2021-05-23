@@ -22,9 +22,9 @@ class BatchGradientDescent(Optimizer):
         self.__descrease_learning_rate
 
     def call(self, loss, parameters, data, labels):
-        gradients = 2 / data.shape[0] * data.T.dot(data.dot(parameters)- labels)
+        gradients = self._partial_derivative(loss, parameters, data, labels)
         new_parameters = self.__learning_rate * gradients
-
+        
         if self.__decrease_learning_rate:
             self.__learning_rate = self._learning_schedule((1 / (self.__learning_rate + 1)) * data.shape[0])
 

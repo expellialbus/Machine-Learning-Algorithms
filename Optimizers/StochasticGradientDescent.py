@@ -29,7 +29,7 @@ class StochasticGradientDescent(Optimizer):
             x_i = data[random_index: random_index + 1]        # it is equivalent to the data[random_idnex].reshape(1, -1)
             y_i = labels[random_index: random_index + 1]      # it is equivalent to the labels[random_index].reshape(1, -1)
 
-            gradients = 2 * x_i.T.dot(x_i.dot(parameters) - y_i)
+            gradients = self._partial_derivative(loss, parameters, data, labels)
             new_parameters = self.__learning_rate * gradients
 
             if self.__decrease_learning_rate:
