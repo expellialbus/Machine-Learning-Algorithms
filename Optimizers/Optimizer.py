@@ -24,7 +24,7 @@ class Optimizer(ABC):
             gradient = self.__helper_derivative(loss, index, parameters, data, labels)
             gradients.append(gradient)
 
-        return np.array(gradients)[:, np.newaxis]  # convert gradients from (4,) shape to (4, 1) shape
+        return np.array(gradients)[:, np.newaxis]  # converts gradients from (4,) shape to (4, 1) shape
         
     def __helper_derivative(self, loss, index, parameters, data, labels):
         def wraps(x):
