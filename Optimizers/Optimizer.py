@@ -1,22 +1,12 @@
 from scipy.misc import derivative
 import numpy as np
 
-from abc import ABC, abstractmethod, abstractproperty
+from abc import ABC, abstractmethod
 
 class Optimizer(ABC):
-    a = 0
-    @abstractproperty
-    def learning_rate(self):
-        pass
-
-    @abstractproperty
-    def decrease_learning_rate(self):
-        pass
-
     @abstractmethod
     def call(self, loss, parameter, data, labels):
         pass
-
 
     def _partial_derivative(self, loss, parameters, data, labels):
         gradients = list()
