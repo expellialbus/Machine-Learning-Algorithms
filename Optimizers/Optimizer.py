@@ -4,6 +4,17 @@ import numpy as np
 from abc import ABC, abstractmethod
 
 class Optimizer(ABC):
+    def __init__(self, learning_rate):
+        self._learning_rate = learning_rate
+
+    @property
+    def learning_rate(self):
+        return self._learning_rate
+
+    @learning_rate.setter
+    def learning_rate(self, value):
+        self._learning_rate = value
+
     @abstractmethod
     def call(self, loss, parameter, data, labels):
         pass
