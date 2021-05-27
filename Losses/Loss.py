@@ -1,6 +1,6 @@
-from abc import ABC, abstractmethod, abstractproperty
+from abc import ABC, abstractmethod
 
 class Loss(ABC):
     @abstractmethod 
-    def call(self, parameters, data, labels):
+    def call(self, true_labels, predicted_labels):
         pass
