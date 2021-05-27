@@ -3,9 +3,9 @@ import numpy as np
 from Loss import Loss
 
 class MSE(Loss):
-    def call(self, parameters, data, labels):
-        result = np.sum(np.power((data.dot(parameters) - labels), 2))
-        return 1 / data.shape[0] * result
+    def call(self, true_labels, predicted_labels):
+        result = np.sum(np.power((predicted_labels - true_labels), 2))
+        return (1 / true_labels.shape[0]) * result
     
-    def __call__(self, parameters, data, labels):
-        return self.call(parameters, data, labels)
+    def __call__(self, true_labels, predicted_labels):
+        return self.call(true_labels, predicted_labels)
