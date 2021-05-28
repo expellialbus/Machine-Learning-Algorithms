@@ -10,10 +10,10 @@ class LinearRegression(Model):
         for step in range(self._training_steps):
             parameters -= self._optimizer(self.calculate_loss, parameters, data, labels)
 
-        return parameters
+        self._parameters = parameters
 
     def calculate_loss(self, parameters, data, labels):
         return self._loss(labels, data.dot(parameters))
 
     def __call__(self, data, labels):
-        return self.call(data, labels)
+        self.call(data, labels)
