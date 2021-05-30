@@ -10,5 +10,6 @@ def get_parent_dir(n=0):
 
 os.sys.path.append(get_parent_dir())
 
+from Loss import Loss
 from MSE import MSE
 from MAE import MAE

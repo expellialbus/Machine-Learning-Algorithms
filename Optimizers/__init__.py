@@ -10,5 +10,6 @@ def get_parent_dir(n=0):
 
 os.sys.path.append(get_parent_dir())
 
+from Optimizer import Optimizer
 from BatchGradientDescent import BatchGradientDescent
 from StochasticGradientDescent import StochasticGradientDescent
