@@ -1,6 +1,6 @@
 import numpy as np
 
-from Optimizer import Optimizer
+from Optimizers import Optimizer
 
 class StochasticGradientDescent(Optimizer):
     def __init__(self, learning_rate, decrease_learning_rate=True):
@@ -27,16 +27,15 @@ class StochasticGradientDescent(Optimizer):
         return 1 / t
         
     def call(self, loss, parameters, data, labels):
-        for item in range(data.shape[0]):
-            random_index = np.random.randint(data.shape[0])
-            x_i = data[random_index: random_index + 1]        # it is equivalent to the data[random_idnex].reshape(1, -1)
-            y_i = labels[random_index: random_index + 1]      # it is equivalent to the labels[random_index].reshape(1, -1)
+        random_index = np.random.randint(data.shape[0])
+        x_i = data[random_index: random_index + 1]        # it is equivalent to the data[random_idnex].reshape(1, -1)
+        y_i = labels[random_index: random_index + 1]      # it is equivalent to the labels[random_index].reshape(1, -1)
 
-            gradients = self._partial_derivative(loss, parameters, x_i, y_i)
-            new_parameters = self.__learning_rate * gradients
+        gradients = self._partial_derivative(loss, parameters, x_i, y_i)
+        new_parameters = self.__learning_rate * gradients
 
-            if self.__decrease_learning_rate:
-                self.__learning_rate = self.__learning_schedule((1 / (self.__learning_rate + 1)) * data.shape[0])
+        if self.__decrease_learning_rate:
+            self.__learning_rate = self.__learning_schedule((1 / (self.__learning_rate + 1)) * data.shape[0])
 
         return new_parameters
 
