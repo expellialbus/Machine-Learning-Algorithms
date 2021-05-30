@@ -1,4 +1,4 @@
-from Optimizer import Optimizer
+from Optimizers import Optimizer
 
 class BatchGradientDescent(Optimizer):
     def __init__(self, learning_rate, decrease_learning_rate=True):

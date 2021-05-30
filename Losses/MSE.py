@@ -1,6 +1,6 @@
 import numpy as np
 
-from Loss import Loss
+from Losses import Loss
 
 class MSE(Loss):
     def call(self, true_labels, predicted_labels):

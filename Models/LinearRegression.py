@@ -1,4 +1,4 @@
-from Model import Model 
+from Models import Model 
 
 class LinearRegression(Model):
     def __init__(self, training_steps, optimizer, loss):
