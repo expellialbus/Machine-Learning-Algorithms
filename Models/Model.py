@@ -35,11 +35,11 @@ class Model(ABC):
         
     @property
     def parameters(self):
-        return self.__parameters
+        return self._parameters
 
     @parameters.setter
     def parameters(self, value):
-        self.__parameters = value
+        self._parameters = value
     
     @abstractmethod
     def call(self, data, label):
