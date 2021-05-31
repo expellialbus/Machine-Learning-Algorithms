@@ -8,6 +8,8 @@ class Model(ABC):
         self._optimizer = optimizer
         self._loss = loss
         self._parameters = None
+        self._data = None
+        self._labels = None
 
     @property 
     def training_steps(self):
@@ -45,16 +47,14 @@ class Model(ABC):
     def call(self, data, label):
         pass
 
-    def _initialize_model(self, data):
-        new_data = np.c_[np.ones((data.shape[0], 1)), data]
-        init_parameters = np.random.rand(new_data.shape[1], 1)
-        
-        return new_data, init_parameters
+    def _initialize_model(self, data, labels):
+        self._data = self._adjust_data(data)
+        self._labels = labels
+        self._parameters = np.random.rand(self._data.shape[1], 1)
 
     @abstractmethod
     def calculate_loss(self, parameters, data, labels):
         pass
 
-    def inference(self, data):
-        data = np.c_[np.ones((data.shape[0], 1)), data]
-        return data.dot(self._parameters)
+    def _adjust_data(self, data):
+        return np.c_[np.ones((data.shape[0], 1)), data]
