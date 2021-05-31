@@ -5,12 +5,18 @@ class LinearRegression(Model):
         super().__init__(training_steps, optimizer, loss)
     
     def call(self, data, labels):
-        data, parameters = self._initialize_model(data)
+        self._initialize_model(data, labels)
 
         for step in range(self._training_steps):
-            parameters -= self._optimizer(self.calculate_loss, parameters, data, labels)
+            self._parameters -= self._optimizer(self.calculate_loss, 
+                                                self._parameters, 
+                                                self._data, 
+                                                self._labels)
 
-        self._parameters = parameters
+    def inference(self, data):
+        data = self._adjust_data(data)
+
+        return data.dot(self._parameters)
 
     def calculate_loss(self, parameters, data, labels):
         return self._loss(labels, data.dot(parameters))
