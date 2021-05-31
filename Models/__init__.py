@@ -12,3 +12,4 @@ os.sys.path.append(get_parent_dir())
 
 from Model import Model
 from LinearRegression import LinearRegression
+from LogisticRegression import LogisticRegression
