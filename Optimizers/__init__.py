@@ -13,3 +13,4 @@ os.sys.path.append(get_parent_dir())
 from Optimizer import Optimizer
 from BatchGradientDescent import BatchGradientDescent
 from StochasticGradientDescent import StochasticGradientDescent
+from MiniBatchGradientDescent import MiniBatchGradientDescent
