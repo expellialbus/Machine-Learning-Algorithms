@@ -28,8 +28,8 @@ class StochasticGradientDescent(Optimizer):
         
     def call(self, loss, parameters, data, labels):
         random_index = np.random.randint(data.shape[0])
-        x_i = data[random_index: random_index + 1]        # it is equivalent to the data[random_idnex].reshape(1, -1)
-        y_i = labels[random_index: random_index + 1]      # it is equivalent to the labels[random_index].reshape(1, -1)
+        x_i = data[random_index: random_index + 1]        # it returns the data as an array with one item
+        y_i = labels[random_index: random_index + 1]      # simply does the same thing
 
         gradients = self._partial_derivative(loss, parameters, x_i, y_i)
         new_parameters = self.__learning_rate * gradients
