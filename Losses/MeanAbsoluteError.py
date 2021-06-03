@@ -2,7 +2,7 @@ import numpy as np
 
 from Losses import Loss
 
-class MAE(Loss):
+class MeanAbsoluteError(Loss):
     def call(self, true_labels, predicted_labels):
         result = np.sum(np.abs(predicted_labels - true_labels))
         return result / true_labels.shape[0]
