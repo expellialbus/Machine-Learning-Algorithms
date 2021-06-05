@@ -14,3 +14,4 @@ from Optimizer import Optimizer
 from BatchGradientDescent import BatchGradientDescent
 from StochasticGradientDescent import StochasticGradientDescent
 from MiniBatchGradientDescent import MiniBatchGradientDescent
+from Momentum import Momentum
