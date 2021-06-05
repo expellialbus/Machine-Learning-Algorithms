@@ -5,7 +5,7 @@ from abc import ABC, abstractmethod
 
 class Optimizer(ABC):
     @abstractmethod
-    def call(self, loss, parameter, data, labels):
+    def call(self, loss, parameters, data, labels):
         pass
 
     def _partial_derivative(self, loss, parameters, data, labels):
