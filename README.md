@@ -1,11 +1,9 @@
-# Project File Structure
-```
 Machine-Learning-Algorithms/
 ├── __init__.py
 ├── LICENSE
 ├── Losses
 │   ├── CosineSimilarity.py
-│   ├── __init__.py 
+│   ├── __init__.py
 │   ├── Loss.py
 │   ├── MeanAbsoluteError.py
 │   ├── MeanAbsolutePercentageError.py
@@ -20,13 +18,14 @@ Machine-Learning-Algorithms/
 │   │   └── LogisticRegression.py
 │   └── Model.py
 ├── Optimizers
+│   ├── AdaGrad.py
 │   ├── BatchGradientDescent.py
 │   ├── __init__.py
 │   ├── MiniBatchGradientDescent.py
 │   ├── Momentum.py
+│   ├── NesterovAcceleratedGradient.py
 │   ├── Optimizer.py
 │   └── StochasticGradientDescent.py
 └── README.md
 
-4 directories, 22 files
-```
+4 directories, 24 files
