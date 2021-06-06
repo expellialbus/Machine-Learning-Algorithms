@@ -3,7 +3,7 @@ import numpy as np
 from Optimizers import Optimizer
 
 class StochasticGradientDescent(Optimizer):
-    def __init__(self, learning_rate, decrease_learning_rate=True):
+    def __init__(self, learning_rate=0.1, decrease_learning_rate=True):
         self.__learning_rate = learning_rate
         self.__decrease_learning_rate = decrease_learning_rate 
 

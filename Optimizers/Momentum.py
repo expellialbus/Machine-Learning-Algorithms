@@ -1,7 +1,7 @@
 from Optimizers import Optimizer
 
 class Momentum(Optimizer):
-    def __init__(self, learning_rate, decrease_learing_rate=True, beta=0.9):
+    def __init__(self, learning_rate=0.1, decrease_learing_rate=True, beta=0.9):
         self.__learning_rate = learning_rate
         self.__decrease_learning_rate = decrease_learing_rate
         self.__beta = beta
