@@ -5,7 +5,7 @@ Machine-Learning-Algorithms/
 ├── LICENSE
 ├── Losses
 │   ├── CosineSimilarity.py
-│   ├── __init__.py
+│   ├── __init__.py 
 │   ├── Loss.py
 │   ├── MeanAbsoluteError.py
 │   ├── MeanAbsolutePercentageError.py
