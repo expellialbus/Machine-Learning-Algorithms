@@ -1,5 +1,3 @@
-import numpy as np
-
 from Optimizers import Optimizer
 
 class Momentum(Optimizer):
