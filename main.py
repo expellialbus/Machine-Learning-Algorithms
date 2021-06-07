@@ -10,11 +10,22 @@ y_train = np.array(4 + (3 * X_train[:, 0]) + (2 * X_train[:, 1]) + (5 * X_train[
 X_test = 3 * np.random.rand(10, 3)
 y_test = np.array(4 + (3 * X_test[:, 0]) + (2 * X_test[:, 1]) + (5 * X_test[:, 2])).reshape(10, 1)
 
-from Optimizers import AdaGrad
+"""
+#visualizing of data
+import matplotlib as mpl
+mpl.use("Qt5Agg")
+import matplotlib.pyplot as plt
+
+for color, dim in zip(("blue", "green", "red"), range(X_train.shape[1])):
+    plt.scatter(X_train[:, dim], y_train, marker="^", color=color)
+plt.show()
+"""
+
+from Optimizers import RMSprop
 from Models.LinearModels import LinearRegression
 from Losses import MeanSquaredError as MSE
 
-log_reg = LinearRegression(2000, AdaGrad(5), MSE())
+log_reg = LinearRegression(2000, RMSprop(1e-4), MSE())
 log_reg(X_train, y_train)
 predictions = log_reg.inference(X_test)
 
@@ -23,3 +34,4 @@ print(log_reg.parameters)
 
 print("#---------------------- Losses --------------------------#")
 print(MSE()(y_test, predictions))
+

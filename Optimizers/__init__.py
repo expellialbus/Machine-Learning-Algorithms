@@ -17,3 +17,4 @@ from MiniBatchGradientDescent import MiniBatchGradientDescent
 from Momentum import Momentum
 from NesterovAcceleratedGradient import NesterovAcceleratedGradient
 from AdaGrad import AdaGrad
+from RMSprop import RMSprop
