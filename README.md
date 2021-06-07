@@ -1,6 +1,5 @@
 # Project File Structure
 
-```
 Machine-Learning-Algorithms/
 ├── __init__.py
 ├── LICENSE
@@ -21,6 +20,7 @@ Machine-Learning-Algorithms/
 │   │   └── LogisticRegression.py
 │   └── Model.py
 ├── Optimizers
+│   ├── Adadelta.py
 │   ├── AdaGrad.py
 │   ├── BatchGradientDescent.py
 │   ├── __init__.py
@@ -28,8 +28,8 @@ Machine-Learning-Algorithms/
 │   ├── Momentum.py
 │   ├── NesterovAcceleratedGradient.py
 │   ├── Optimizer.py
+│   ├── RMSprop.py
 │   └── StochasticGradientDescent.py
 └── README.md
 
-4 directories, 24 files
-```
+4 directories, 26 files
