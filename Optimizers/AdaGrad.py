@@ -3,10 +3,9 @@ import numpy as np
 from Optimizers import Optimizer
 
 class AdaGrad(Optimizer):
-    def __init__(self, learning_rate=0.1, decrease_learning_rate=True, beta=0.9, epsilon=1e-7):
+    def __init__(self, learning_rate=0.1, decrease_learning_rate=True, epsilon=1e-7):
         self.__learning_rate = learning_rate
         self.__decrease_learning_rate = decrease_learning_rate
-        self.__beta = beta
         self.__epsilon = epsilon
         self.__cumulative_sum = 0
 
@@ -25,14 +24,6 @@ class AdaGrad(Optimizer):
     @decrease_learning_rate.setter
     def decrease_learning_rate(self, value):
         self.__decrease_learning_rate = value
-
-    @property
-    def beta(self):
-        return self.__beta
-
-    @beta.setter
-    def beta(self, value):
-        self.__beta = value
 
     @property
     def epsilon(self):
