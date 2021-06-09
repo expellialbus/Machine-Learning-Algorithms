@@ -31,7 +31,7 @@ class NesterovAcceleratedGradient(Optimizer):
     def beta(self, value):
         self.__beta = value
 
-    def __learning_scheduler(self, t):
+    def __learning_schedule(self, t):
         return 1 / t
 
     def __update_velocity(self, gradients):
@@ -46,7 +46,7 @@ class NesterovAcceleratedGradient(Optimizer):
         new_parameters = self.__learning_rate * self.__velocity
 
         if self.__decrease_learning_rate:
-            self.__learning_rate = self.__learning_scheduler((1 / (self.__learning_rate + 1)) * data.shape[0])
+            self.__learning_rate = self.__learning_schedule((1 / (self.__learning_rate + 1)) * data.shape[0])
 
         return new_parameters
 

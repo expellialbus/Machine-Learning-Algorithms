@@ -42,7 +42,7 @@ class RMSprop(Optimizer):
     def epsilon(self, value):
         self.__epsilon = value
 
-    def __learning_scheduler(self, t):
+    def __learning_schedule(self, t):
         return 1 / t
 
     def __update_cumulative_sum(self, gradients):
@@ -55,7 +55,7 @@ class RMSprop(Optimizer):
         new_parameters = (self.__learning_rate / np.sqrt(self.__cumulative_sum + self.__epsilon)) * gradients
 
         if self.__decrease_learning_rate:
-            self.__learning_rate = self.__learning_scheduler((1 / (self.__learning_rate + 1)) * data.shape[0])
+            self.__learning_rate = self.__learning_schedule((1 / (self.__learning_rate + 1)) * data.shape[0])
 
         return new_parameters
 
