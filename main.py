@@ -21,16 +21,16 @@ for color, dim in zip(("blue", "green", "red"), range(X_train.shape[1])):
 plt.show()
 """
 
-from Optimizers import Adadelta
+from Optimizers import Adam
 from Models.LinearModels import LinearRegression
 from Losses import MeanAbsoluteError as MAE
 
-log_reg = LinearRegression(2000, Adadelta(), MAE())
-log_reg(X_train, y_train)
-predictions = log_reg.inference(X_test)
+lin_reg = LinearRegression(2000, Adam(), MAE())
+lin_reg(X_train, y_train)
+predictions = lin_reg.inference(X_test)
 
 print("#-------------------- Parameters ------------------------#")
-print(log_reg.parameters)
+print(lin_reg.parameters)
 
 print("#---------------------- Losses --------------------------#")
 print(MAE()(y_test, predictions))
