@@ -19,3 +19,4 @@ from NesterovAcceleratedGradient import NesterovAcceleratedGradient
 from AdaGrad import AdaGrad
 from RMSprop import RMSprop
 from Adadelta import Adadelta
+from Adam import Adam
