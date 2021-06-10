@@ -1,4 +1,4 @@
-import os 
+import os
 
 def get_parent_dir(n=0):
     current_path = os.path.dirname(os.path.abspath(__file__))
@@ -21,3 +21,4 @@ from RMSprop import RMSprop
 from Adadelta import Adadelta
 from Adam import Adam
 from AdaMax import AdaMax
+from Nadam import Nadam
