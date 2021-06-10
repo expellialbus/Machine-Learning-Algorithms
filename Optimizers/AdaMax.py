@@ -46,13 +46,9 @@ class AdaMax(Optimizer):
 
     def __update_norm_of_gradients(self, gradients):
         if type(self.__norm_of_gradients) == int:
-            self.__norm_of_gradients = np.array(0).repeat(gradients.shape[0])
+            self.__norm_of_gradients = np.array(0).repeat(gradients.shape[0]).reshape(-1, 1)
 
-        norms = list()
-        for norm, gradient in zip((self.__beta_two * self.__norm_of_gradients), gradients):
-            norms.append(max(norm, np.abs(gradient)))
-
-        self.__norm_of_gradients = np.array(norms).reshape(-1, 1)
+        self.__norm_of_gradients = np.maximum((self.__beta_two * self.__norm_of_gradients), np.abs(gradients))
 
     def call(self, loss, parameters, data, labels):
         gradients = self._partial_derivative(loss, parameters, data, labels)
