@@ -21,11 +21,11 @@ for color, dim in zip(("blue", "green", "red"), range(X_train.shape[1])):
 plt.show()
 """
 
-from Optimizers import AdaMax
+from Optimizers import AMSGrad
 from Models.LinearModels import LinearRegression
 from Losses import MeanAbsoluteError as MAE
 
-lin_reg = LinearRegression(2000, AdaMax(), MAE())
+lin_reg = LinearRegression(2000, AMSGrad(), MAE())
 lin_reg(X_train, y_train)
 predictions = lin_reg.inference(X_test)
 
