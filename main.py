@@ -23,9 +23,9 @@ plt.show()
 
 from Optimizers import AMSGrad
 from Models.LinearModels import LinearRegression
-from Losses import MeanAbsoluteError as MAE
+from Losses import HuberLoss, MeanAbsoluteError as MAE
 
-lin_reg = LinearRegression(2000, AMSGrad(), MAE())
+lin_reg = LinearRegression(2000, AMSGrad(), HuberLoss())
 lin_reg(X_train, y_train)
 predictions = lin_reg.inference(X_test)
 
@@ -33,5 +33,4 @@ print("#-------------------- Parameters ------------------------#")
 print(lin_reg.parameters)
 
 print("#---------------------- Losses --------------------------#")
-print(MAE()(y_test, predictions))
-
+print(HuberLoss()(y_test, predictions))
