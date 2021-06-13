@@ -7,7 +7,7 @@ class Adadelta(Optimizer):
         self.__beta = beta
         self.__epsilon = epsilon
         self.__delta = 0
-        self.__cumulative_sum = 0
+        self.__s = 0
         self.__old_parameters = 0
 
     @property
@@ -35,14 +35,14 @@ class Adadelta(Optimizer):
 
         return delta_parameters
 
-    def __update_cumulative_sum(self, gradients):
-        self.__cumulative_sum = (self.__beta * self.__cumulative_sum) + ((1 - self.__beta) * np.power(gradients, 2))
+    def __update_s(self, gradients):
+        self.__s = (self.__beta * self.__s) + ((1 - self.__beta) * np.power(gradients, 2))
 
     def call(self, loss, parameters, data, labels):
         gradients = self._partial_derivative(loss, parameters, data, labels)
-        self.__update_cumulative_sum(gradients)
+        self.__update_s(gradients)
 
-        new_parameters = (np.sqrt(self.__delta + self.__epsilon) / np.sqrt(self.__cumulative_sum + self.__epsilon)) * gradients
+        new_parameters = (np.sqrt(self.__delta + self.__epsilon) / np.sqrt(self.__s + self.__epsilon)) * gradients
 
         delta_parameters = self.__update_parameters(parameters)
         self.__update_delta(delta_parameters)

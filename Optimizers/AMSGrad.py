@@ -11,7 +11,7 @@ class AMSGrad(Optimizer):
         self.__decrease_learning_rate = decrease_learning_rate
 
         self.__velocity = 0
-        self.__cumulative_sum = 0
+        self.__s = 0
 
     @property
     def learning_rate(self):
@@ -59,22 +59,22 @@ class AMSGrad(Optimizer):
     def __update_velocity(self, gradients):
         self.__velocity = (self.__beta_one * self.__velocity) + ((1 - self.__beta_one) * gradients)
 
-    def __update_cumulative_sum(self, gradients):
-        cumulative_sum = (self.__beta_two * self.__cumulative_sum) + ((1 - self.__beta_two) * np.power(gradients, 2))
+    def __update_s(self, gradients):
+        s = (self.__beta_two * self.__s) + ((1 - self.__beta_two) * np.power(gradients, 2))
 
-        if type(self.__cumulative_sum) == int:      # it will execute just for the first iteration
-            self.__cumulative_sum = cumulative_sum
+        if type(self.__s) == int:      # it will execute just for the first iteration
+            self.__s = s
 
         else:
-            self.__cumulative_sum = np.maximum(self.__cumulative_sum, cumulative_sum)
+            self.__s = np.maximum(self.__s, s)
 
     def call(self, loss, parameters, data, labels):
         gradients = self._partial_derivative(loss, parameters, data, labels)
 
         self.__update_velocity(gradients)
-        self.__update_cumulative_sum(gradients)
+        self.__update_s(gradients)
 
-        new_parameters = (self.__learning_rate / (np.sqrt(self.__cumulative_sum) + self.__epsilon)) * self.__velocity
+        new_parameters = (self.__learning_rate / (np.sqrt(self.__s) + self.__epsilon)) * self.__velocity
 
         if self.__decrease_learning_rate:
             self.__learning_rate = self.__learning_schedule((1 / (self.__learning_rate + 1)) * data.shape[0])

@@ -11,7 +11,7 @@ class Nadam(Optimizer):
         self.__decrease_learning_rate = decrease_learning_rate
 
         self.__velocity = 0
-        self.__cumulative_sum = 0
+        self.__s = 0
 
     @property
     def learning_rate(self):
@@ -62,17 +62,17 @@ class Nadam(Optimizer):
         return self.__velocity / (1 - self.__beta_one)
 
     def __update_cummulative_sum(self, gradients):
-        self.__cumulative_sum = (self.__beta_two * self.__cumulative_sum) + ((1 - self.__beta_two) * np.power(gradients, 2))
+        self.__s = (self.__beta_two * self.__s) + ((1 - self.__beta_two) * np.power(gradients, 2))
 
-        return self.__cumulative_sum / (1 - self.__beta_two)
+        return self.__s / (1 - self.__beta_two)
 
     def call(self, loss, parameters, data, labels):
         gradients = self._partial_derivative(loss, parameters, data, labels)
 
         velocity = self.__update_velocity(gradients)
-        cumulative_sum = self.__update_cummulative_sum(gradients)
+        s = self.__update_cummulative_sum(gradients)
 
-        new_parameters = (self.__learning_rate / (np.sqrt(cumulative_sum) + self.__epsilon)) * \
+        new_parameters = (self.__learning_rate / (np.sqrt(s) + self.__epsilon)) * \
                          ((self.__beta_one * velocity) + (((1 - self.__beta_one) / (1 - self.__beta_one)) * gradients))
 
         if self.__decrease_learning_rate:

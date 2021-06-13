@@ -8,7 +8,7 @@ class RMSprop(Optimizer):
         self.__decrease_learning_rate = decrease_learning_rate
         self.__beta = beta
         self.__epsilon = epsilon
-        self.__cumulative_sum = 0
+        self.__s = 0
 
     @property
     def learning_rate(self):
@@ -45,14 +45,14 @@ class RMSprop(Optimizer):
     def __learning_schedule(self, t):
         return 1 / t
 
-    def __update_cumulative_sum(self, gradients):
-        self.__cumulative_sum = (self.__beta * self.__cumulative_sum) + ((1 - self.__beta) * np.power(gradients, 2))
+    def __update_s(self, gradients):
+        self.__s = (self.__beta * self.__s) + ((1 - self.__beta) * np.power(gradients, 2))
 
     def call(self, loss, parameters, data, labels):
         gradients = self._partial_derivative(loss, parameters, data, labels)
-        self.__update_cumulative_sum(gradients)
+        self.__update_s(gradients)
 
-        new_parameters = (self.__learning_rate / np.sqrt(self.__cumulative_sum + self.__epsilon)) * gradients
+        new_parameters = (self.__learning_rate / np.sqrt(self.__s + self.__epsilon)) * gradients
 
         if self.__decrease_learning_rate:
             self.__learning_rate = self.__learning_schedule((1 / (self.__learning_rate + 1)) * data.shape[0])
