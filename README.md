@@ -6,12 +6,15 @@ Machine-Learning-Algorithms/
 ├── LICENSE
 ├── Losses
 │   ├── CosineSimilarity.py
+│   ├── HuberLoss.py
 │   ├── __init__.py
+│   ├── LogCosh.py
 │   ├── Loss.py
 │   ├── MeanAbsoluteError.py
 │   ├── MeanAbsolutePercentageError.py
 │   ├── MeanSquaredError.py
-│   └── MeanSquaredLogarithmicError.py
+│   ├── Quantile.py
+│   └── RootMeanSquaredError.py
 ├── main.py
 ├── Models
 │   ├── __init__.py
@@ -37,5 +40,5 @@ Machine-Learning-Algorithms/
 │   └── StochasticGradientDescent.py
 └── README.md
 
-4 directories, 30 files
+4 directories, 33 files
 ```
