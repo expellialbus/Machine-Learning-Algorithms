@@ -18,3 +18,4 @@ from CosineSimilarity import CosineSimilarity
 from HuberLoss import HuberLoss
 from LogCosh import LogCosh
 from RootMeanSquaredError import RootMeanSquaredError
+from Quantile import Quantile
