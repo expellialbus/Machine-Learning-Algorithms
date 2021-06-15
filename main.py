@@ -23,9 +23,9 @@ plt.show()
 
 from Optimizers import AdaMax
 from Models.LinearModels import LinearRegression
-from Losses import LogCosh
+from Losses import Quantile
 
-lin_reg = LinearRegression(2000, AdaMax(), LogCosh())
+lin_reg = LinearRegression(2000, AdaMax(), Quantile())
 lin_reg(X_train, y_train)
 predictions = lin_reg.inference(X_test)
 
@@ -33,4 +33,4 @@ print("#-------------------- Parameters ------------------------#")
 print(lin_reg.parameters)
 
 print("#---------------------- Losses --------------------------#")
-print(LogCosh()(y_test, predictions))
+print(Quantile()(y_test, predictions))
