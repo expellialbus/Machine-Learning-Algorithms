@@ -16,3 +16,4 @@ from MeanAbsoluteError import MeanAbsoluteError
 from MeanAbsolutePercentageError import MeanAbsolutePercentageError
 from CosineSimilarity import CosineSimilarity
 from HuberLoss import HuberLoss
+from LogCosh import LogCosh
