@@ -14,6 +14,5 @@ from Loss import Loss
 from MeanSquaredError import MeanSquaredError
 from MeanAbsoluteError import MeanAbsoluteError
 from MeanAbsolutePercentageError import MeanAbsolutePercentageError
-from MeanSquaredLogarithmicError import MeanSquaredLogarithmicError
 from CosineSimilarity import CosineSimilarity
 from HuberLoss import HuberLoss
