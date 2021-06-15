@@ -21,11 +21,11 @@ for color, dim in zip(("blue", "green", "red"), range(X_train.shape[1])):
 plt.show()
 """
 
-from Optimizers import AMSGrad
+from Optimizers import AdaMax
 from Models.LinearModels import LinearRegression
-from Losses import HuberLoss, MeanAbsoluteError as MAE
+from Losses import LogCosh
 
-lin_reg = LinearRegression(2000, AMSGrad(), HuberLoss())
+lin_reg = LinearRegression(2000, AdaMax(), LogCosh())
 lin_reg(X_train, y_train)
 predictions = lin_reg.inference(X_test)
 
@@ -33,4 +33,4 @@ print("#-------------------- Parameters ------------------------#")
 print(lin_reg.parameters)
 
 print("#---------------------- Losses --------------------------#")
-print(HuberLoss()(y_test, predictions))
+print(LogCosh()(y_test, predictions))
