@@ -1,0 +1,11 @@
+import numpy as np
+
+from Losses import Loss
+
+class SymmetricMeanAbsolutePercentageError(Loss):
+    def call(self, true_labels, predicted_labels):
+        result = (2 * np.abs(true_labels - predicted_labels)) / (np.abs(true_labels) + np.abs(predicted_labels))
+        return 100 * np.mean(result)
+
+    def __call__(self, true_labels, predicted_labels):
+        return self.call(true_labels, predicted_labels)
