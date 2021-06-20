@@ -23,3 +23,4 @@ from MeanError import MeanError
 from MeanPercentageError import MeanPercentageError
 from SymmetricMeanAbsolutePercentageError import SymmetricMeanAbsolutePercentageError
 from MeanNormalizedBias import MeanNormalizedBias
+from MedianAbsoluteError import MedianAbsoluteError
