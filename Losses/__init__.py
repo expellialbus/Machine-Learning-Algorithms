@@ -22,3 +22,4 @@ from Quantile import Quantile
 from MeanError import MeanError
 from MeanPercentageError import MeanPercentageError
 from SymmetricMeanAbsolutePercentageError import SymmetricMeanAbsolutePercentageError
+from MeanNormalizedBias import MeanNormalizedBias
