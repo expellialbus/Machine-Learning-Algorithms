@@ -11,16 +11,16 @@ def get_parent_dir(n=0):
 os.sys.path.append(get_parent_dir())
 
 from Loss import Loss
-from MeanSquaredError import MeanSquaredError
-from MeanAbsoluteError import MeanAbsoluteError
-from MeanAbsolutePercentageError import MeanAbsolutePercentageError
+from MeanSquaredError import MeanSquaredError as MSE
+from MeanAbsoluteError import MeanAbsoluteError as MAE
+from MeanAbsolutePercentageError import MeanAbsolutePercentageError as MAPE
 from CosineSimilarity import CosineSimilarity
 from HuberLoss import HuberLoss
 from LogCosh import LogCosh
-from RootMeanSquaredError import RootMeanSquaredError
+from RootMeanSquaredError import RootMeanSquaredError as RMSE
 from Quantile import Quantile
 from MeanError import MeanError
-from MeanPercentageError import MeanPercentageError
-from SymmetricMeanAbsolutePercentageError import SymmetricMeanAbsolutePercentageError
-from MeanNormalizedBias import MeanNormalizedBias
-from MedianAbsoluteError import MedianAbsoluteError
+from MeanPercentageError import MeanPercentageError as MPE
+from SymmetricMeanAbsolutePercentageError import SymmetricMeanAbsolutePercentageError as SMAPE
+from MeanNormalizedBias import MeanNormalizedBias as MNB
+from MedianAbsoluteError import MedianAbsoluteError as MdAE
