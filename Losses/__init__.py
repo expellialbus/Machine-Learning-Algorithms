@@ -24,3 +24,4 @@ from MeanPercentageError import MeanPercentageError as MPE
 from SymmetricMeanAbsolutePercentageError import SymmetricMeanAbsolutePercentageError as SMAPE
 from MeanNormalizedBias import MeanNormalizedBias as MNB
 from MedianAbsoluteError import MedianAbsoluteError as MdAE
+from MaximumAbsoluteError import MaximumAbsoluteError as MaxAE
