@@ -10,11 +10,18 @@ Machine-Learning-Algorithms/
 │   ├── __init__.py
 │   ├── LogCosh.py
 │   ├── Loss.py
+│   ├── MaximumAbsoluteError.py
 │   ├── MeanAbsoluteError.py
 │   ├── MeanAbsolutePercentageError.py
+│   ├── MeanAbsoluteRelativeError.py
+│   ├── MeanError.py
+│   ├── MeanNormalizedBias.py
+│   ├── MeanPercentageError.py
 │   ├── MeanSquaredError.py
+│   ├── MedianAbsoluteError.py
 │   ├── Quantile.py
-│   └── RootMeanSquaredError.py
+│   ├── RootMeanSquaredError.py
+│   └── SymmetricMeanAbsolutePercentageError.py
 ├── main.py
 ├── Models
 │   ├── __init__.py
@@ -40,5 +47,5 @@ Machine-Learning-Algorithms/
 │   └── StochasticGradientDescent.py
 └── README.md
 
-4 directories, 33 files
+4 directories, 40 files
 ```
