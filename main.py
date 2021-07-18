@@ -22,10 +22,10 @@ plt.show()
 """
 
 from Optimizers import AdaMax
-from Models.LinearModels import LinearRegression
-from Losses import MARE
+from Models import LinearRegression
+from Losses import MdAPE
 
-lin_reg = LinearRegression(2000, AdaMax(), MARE())
+lin_reg = LinearRegression(2000, AdaMax(), MdAPE())
 lin_reg(X_train, y_train)
 predictions = lin_reg.inference(X_test)
 
@@ -33,4 +33,4 @@ print("#-------------------- Parameters ------------------------#")
 print(lin_reg.parameters)
 
 print("#---------------------- Losses --------------------------#")
-print(MARE()(y_test, predictions))
+print(MdAPE()(y_test, predictions))
