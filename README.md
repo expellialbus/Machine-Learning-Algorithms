@@ -1,5 +1,6 @@
 # Project File Structure
 
+```
 Machine-Learning-Algorithms/
 ├── Losses
 │   ├── CosineSimilarity.py
@@ -50,3 +51,4 @@ Machine-Learning-Algorithms/
 └── README.md
 
 4 directories, 43 files
+```
