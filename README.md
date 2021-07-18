@@ -1,9 +1,6 @@
 # Project File Structure
 
-```
 Machine-Learning-Algorithms/
-├── __init__.py
-├── LICENSE
 ├── Losses
 │   ├── CosineSimilarity.py
 │   ├── HuberLoss.py
@@ -17,18 +14,20 @@ Machine-Learning-Algorithms/
 │   ├── MeanError.py
 │   ├── MeanNormalizedBias.py
 │   ├── MeanPercentageError.py
+│   ├── MeanRelativeAbsoluteError.py
 │   ├── MeanSquaredError.py
 │   ├── MedianAbsoluteError.py
+│   ├── MedianAbsolutePercentageError.py
 │   ├── Quantile.py
+│   ├── RelativeAbsoluteError.py
 │   ├── RootMeanSquaredError.py
 │   └── SymmetricMeanAbsolutePercentageError.py
-├── main.py
 ├── Models
-│   ├── __init__.py
 │   ├── LinearModels
 │   │   ├── __init__.py
 │   │   ├── LinearRegression.py
 │   │   └── LogisticRegression.py
+│   ├── __init__.py
 │   └── Model.py
 ├── Optimizers
 │   ├── Adadelta.py
@@ -45,7 +44,9 @@ Machine-Learning-Algorithms/
 │   ├── Optimizer.py
 │   ├── RMSprop.py
 │   └── StochasticGradientDescent.py
+├── __init__.py
+├── LICENSE
+├── main.py
 └── README.md
 
-4 directories, 40 files
-```
+4 directories, 43 files
