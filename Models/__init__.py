@@ -11,3 +11,4 @@ def get_parent_dir(n=0):
 os.sys.path.append(get_parent_dir())
 
 from Model import Model
+from LinearModels import *
