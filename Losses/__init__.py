@@ -27,3 +27,4 @@ from MedianAbsoluteError import MedianAbsoluteError as MdAE
 from MaximumAbsoluteError import MaximumAbsoluteError as MaxAE
 from MeanAbsoluteRelativeError import MeanAbsoluteRelativeError as MARE
 from MedianAbsolutePercentageError import MedianAbsolutePercentageError as MdAPE
+from RelativeAbsoluteError import RelativeAbsoluteError as RAE
