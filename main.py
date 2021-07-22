@@ -23,9 +23,9 @@ plt.show()
 
 from Optimizers import AdaMax
 from Models import LinearRegression
-from Losses import GMAE
+from Losses import SAD
 
-lin_reg = LinearRegression(2000, AdaMax(), GMAE())
+lin_reg = LinearRegression(2000, AdaMax(), SAD())
 lin_reg(X_train, y_train)
 predictions = lin_reg.inference(X_test)
 
@@ -33,4 +33,4 @@ print("#-------------------- Parameters ------------------------#")
 print(lin_reg.parameters)
 
 print("#---------------------- Losses --------------------------#")
-print(GMAE()(y_test, predictions))
+print(SAD()(y_test, predictions))
