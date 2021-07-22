@@ -4,6 +4,8 @@
 Machine-Learning-Algorithms/
 ├── Losses
 │   ├── CosineSimilarity.py
+│   ├── GeometricMeanAbsoluteError.py
+│   ├── GeometricMeanRelativeAbsoluteError.py
 │   ├── HuberLoss.py
 │   ├── __init__.py
 │   ├── LogCosh.py
@@ -19,9 +21,11 @@ Machine-Learning-Algorithms/
 │   ├── MeanSquaredError.py
 │   ├── MedianAbsoluteError.py
 │   ├── MedianAbsolutePercentageError.py
+│   ├── MedianRelativeAbsoluteError.py
 │   ├── Quantile.py
 │   ├── RelativeAbsoluteError.py
 │   ├── RootMeanSquaredError.py
+│   ├── SumOfAbsoluteDifference.py
 │   └── SymmetricMeanAbsolutePercentageError.py
 ├── Models
 │   ├── LinearModels
@@ -50,5 +54,5 @@ Machine-Learning-Algorithms/
 ├── main.py
 └── README.md
 
-4 directories, 43 files
+4 directories, 47 files
 ```
