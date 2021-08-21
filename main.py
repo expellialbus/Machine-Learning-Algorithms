@@ -1,4 +1,4 @@
-# This file is just a temporary file to try optimizers, losses, models etc.
+# This file is just a temporary file to try optimizers, losses, models etc. for code errors
 
 import numpy as np
 
@@ -23,9 +23,9 @@ plt.show()
 
 from Optimizers import AdaMax
 from Models import LinearRegression
-from Losses import RSE
+from Losses import RRSE
 
-lin_reg = LinearRegression(2000, AdaMax(), RSE())
+lin_reg = LinearRegression(2000, AdaMax(), RRSE())
 lin_reg(X_train, y_train)
 predictions = lin_reg.inference(X_test)
 
@@ -33,4 +33,4 @@ print("#-------------------- Parameters ------------------------#")
 print(lin_reg.parameters)
 
 print("#---------------------- Losses --------------------------#")
-print(RSE()(y_test, predictions))
+print(RRSE()(y_test, predictions))

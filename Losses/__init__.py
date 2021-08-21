@@ -36,3 +36,4 @@ from MedianRelativeAbsoluteError import MedianRelativeAbsoluteError as MdRAE
 from SymmetricMedianAbsolutePercentageError import SymmetricMedianAbsolutePercentageError as sMdAPE
 from SumOfSquaredError import SumOfSquaredError as SSE
 from RelativeSquaredError import RelativeSquaredError as RSE
+from RootRelativeSquaredError import RootRelativeSquaredError as RRSE
