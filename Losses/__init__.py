@@ -33,3 +33,4 @@ from GeometricMeanAbsoluteError import GeometricMeanAbsoluteError as GMAE
 from SumOfAbsoluteDifference import SumOfAbsoluteDifference as SAD
 from GeometricMeanRelativeAbsoluteError import GeometricMeanRelativeAbsoluteError as GMRAE
 from MedianRelativeAbsoluteError import MedianRelativeAbsoluteError as MdRAE
+from SymmetricMedianAbsolutePercentageError import SymmetricMedianAbsolutePercentageError as sMdAPE
