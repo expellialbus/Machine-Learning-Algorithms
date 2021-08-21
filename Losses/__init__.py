@@ -37,3 +37,4 @@ from SymmetricMedianAbsolutePercentageError import SymmetricMedianAbsolutePercen
 from SumOfSquaredError import SumOfSquaredError as SSE
 from RelativeSquaredError import RelativeSquaredError as RSE
 from RootRelativeSquaredError import RootRelativeSquaredError as RRSE
+from GeometricRootMeanSquaredError import GeometricRootMeanSquaredError as GRMSE

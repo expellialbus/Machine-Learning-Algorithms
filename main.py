@@ -23,9 +23,9 @@ plt.show()
 
 from Optimizers import AdaMax
 from Models import LinearRegression
-from Losses import RRSE
+from Losses import GRMSE
 
-lin_reg = LinearRegression(2000, AdaMax(), RRSE())
+lin_reg = LinearRegression(2000, AdaMax(), GRMSE())
 lin_reg(X_train, y_train)
 predictions = lin_reg.inference(X_test)
 
@@ -33,4 +33,4 @@ print("#-------------------- Parameters ------------------------#")
 print(lin_reg.parameters)
 
 print("#---------------------- Losses --------------------------#")
-print(RRSE()(y_test, predictions))
+print(GRMSE()(y_test, predictions))
