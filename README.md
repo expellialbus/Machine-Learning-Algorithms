@@ -6,6 +6,7 @@ Machine-Learning-Algorithms/
 │   ├── CosineSimilarity.py
 │   ├── GeometricMeanAbsoluteError.py
 │   ├── GeometricMeanRelativeAbsoluteError.py
+│   ├── GeometricRootMeanSquaredError.py
 │   ├── HuberLoss.py
 │   ├── __init__.py
 │   ├── LogCosh.py
@@ -19,14 +20,22 @@ Machine-Learning-Algorithms/
 │   ├── MeanPercentageError.py
 │   ├── MeanRelativeAbsoluteError.py
 │   ├── MeanSquaredError.py
+│   ├── MeanSquarePercentageError.py
 │   ├── MedianAbsoluteError.py
 │   ├── MedianAbsolutePercentageError.py
 │   ├── MedianRelativeAbsoluteError.py
+│   ├── MedianSquarePercentageError.py
 │   ├── Quantile.py
 │   ├── RelativeAbsoluteError.py
+│   ├── RelativeSquaredError.py
 │   ├── RootMeanSquaredError.py
+│   ├── RootMeanSquarePercentageError.py
+│   ├── RootMedianSquarePercentageError.py
+│   ├── RootRelativeSquaredError.py
 │   ├── SumOfAbsoluteDifference.py
-│   └── SymmetricMeanAbsolutePercentageError.py
+│   ├── SumOfSquaredError.py
+│   ├── SymmetricMeanAbsolutePercentageError.py
+│   └── SymmetricMedianAbsolutePercentageError.py
 ├── Models
 │   ├── LinearModels
 │   │   ├── __init__.py
@@ -54,5 +63,5 @@ Machine-Learning-Algorithms/
 ├── main.py
 └── README.md
 
-4 directories, 47 files
+4 directories, 56 files
 ```
