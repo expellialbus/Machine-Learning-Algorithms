@@ -41,3 +41,4 @@ from GeometricRootMeanSquaredError import GeometricRootMeanSquaredError as GRMSE
 from MeanSquarePercentageError import MeanSquarePercentageError as MSPE
 from MedianSquarePercentageError import MedianSquarePercentageError as MdSPE
 from RootMeanSquarePercentageError import RootMeanSquarePercentageError as RMSPE
+from RootMedianSquarePercentageError import RootMedianSquarePercentageError as RMdSPE
