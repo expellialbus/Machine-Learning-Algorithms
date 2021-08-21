@@ -23,9 +23,9 @@ plt.show()
 
 from Optimizers import AdaMax
 from Models import LinearRegression
-from Losses import MSPE
+from Losses import MdSPE
 
-lin_reg = LinearRegression(2000, AdaMax(), MSPE())
+lin_reg = LinearRegression(2000, AdaMax(), MdSPE())
 lin_reg(X_train, y_train)
 predictions = lin_reg.inference(X_test)
 
@@ -33,4 +33,4 @@ print("#-------------------- Parameters ------------------------#")
 print(lin_reg.parameters)
 
 print("#---------------------- Losses --------------------------#")
-print(MSPE()(y_test, predictions))
+print(MdSPE()(y_test, predictions))
