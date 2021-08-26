@@ -1,42 +1,45 @@
 from abc import ABC, abstractmethod
+import numpy as np
 
 class Layer(ABC):
     def __init__(self, n_neurons, activation):
-        self.n_neurons = n_neurons
-        self.activation = activation
+        self._n_neurons = n_neurons
+        self._activation = activation
+        self._inputs = np.random.rand(5, 1)
+        self._outputs = None
 
     @property
     def n_neurons(self):
-        return self.n_neurons
+        return self._n_neurons
 
     @n_neurons.setter
     def n_neurons(self, value):
-        self.n_neurons = value
-
-    @property
-    def inputs(self):
-        return self.inputs
-
-    @inputs.setter
-    def inputs(self, value):
-        self.inputs = value
-
-    @property
-    def outputs(self):
-        return self.outputs
-
-    @outputs.setter
-    def outputs(self, value):
-        self.outputs = value
+        self._n_neurons = value
 
     @property
     def activation(self):
-        return self.activation
+        return self._activation
 
     @activation.setter
     def activation(self, value):
-        self.activation = value
+        self._activation = value
+
+    @property
+    def inputs(self):
+        return self._inputs
+
+    @inputs.setter
+    def inputs(self, value):
+        self._inputs = value
+
+    @property
+    def outputs(self):
+        return self._outputs
+
+    @outputs.setter
+    def outputs(self, value):
+        self._outputs = value
 
     @abstractmethod
-    def call(self, layer):
+    def forward(self):
         pass
