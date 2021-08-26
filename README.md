@@ -1,4 +1,4 @@
-# Project File Structure
+#Project File Structrue
 
 ```
 Machine-Learning-Algorithms/
@@ -41,6 +41,14 @@ Machine-Learning-Algorithms/
 │   │   ├── __init__.py
 │   │   ├── LinearRegression.py
 │   │   └── LogisticRegression.py
+│   ├── NeuralNetworks
+│   │   ├── Activations
+│   │   │   └── __init__.py
+│   │   ├── Layers
+│   │   │   ├── Dense.py
+│   │   │   ├── __init__.py
+│   │   │   └── Layer.py
+│   │   └── __init__.py
 │   ├── __init__.py
 │   └── Model.py
 ├── Optimizers
@@ -63,5 +71,5 @@ Machine-Learning-Algorithms/
 ├── main.py
 └── README.md
 
-4 directories, 56 files
+7 directories, 61 files
 ```
