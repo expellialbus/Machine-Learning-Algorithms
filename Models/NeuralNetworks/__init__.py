@@ -9,6 +9,3 @@ def get_parent_dir(n=0):
     return current_path
 
 os.sys.path.append(get_parent_dir(1))
-
-from Layers import Layer
-from Layers import Dense
