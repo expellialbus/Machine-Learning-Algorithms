@@ -50,11 +50,11 @@ class Model(ABC):
     def _initialize_model(self, data, labels):
         self._data = self._adjust_data(data)
         self._labels = labels
-        self._parameters = np.random.rand(self._data.shape[1], 1)
+        self._parameters = np.random.randn(self._data.shape[1], 1)
 
     @abstractmethod
     def calculate_loss(self, parameters, data, labels):
         pass
 
     def _adjust_data(self, data):
-        return np.c_[np.ones((data.shape[0], 1)), data]
+        return np.c_[data, np.ones((data.shape[0], 1))]
