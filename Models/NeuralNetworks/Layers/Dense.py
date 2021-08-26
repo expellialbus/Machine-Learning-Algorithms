@@ -1,7 +1,7 @@
 import numpy as np
 
 from ..Layers import Layer
-from ..Activations import Activation
+from Activations import Activation
 
 class Dense(Layer):
     def __init__(self, n_neurons, activation=None):
