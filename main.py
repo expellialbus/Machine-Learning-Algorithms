@@ -24,6 +24,7 @@ plt.show()
 from Optimizers import AdaMax
 from Models import LinearRegression
 from Losses import RMdSPE
+from Models.NeuralNetworks import Layers
 
 lin_reg = LinearRegression(2000, AdaMax(), RMdSPE())
 lin_reg(X_train, y_train)
@@ -34,3 +35,5 @@ print(lin_reg.parameters)
 
 print("#---------------------- Losses --------------------------#")
 print(RMdSPE()(y_test, predictions))
+
+Layers.Dense(5, "relu").forward()
