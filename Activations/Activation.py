@@ -7,7 +7,7 @@ class Activation(ABC):
         module = import_module("Activations." + name.capitalize())
         activation = getattr(module, name.capitalize())
 
-        return activation()
+        return activation()     # creates an instance of the class
 
     @abstractmethod
     def call(self, inputs):
