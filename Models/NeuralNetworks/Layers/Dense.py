@@ -6,8 +6,11 @@ from Activations import Activation
 class Dense(Layer):
     def __init__(self, n_neurons, activation=None):
         super().__init__(n_neurons, activation)
+        self._weights = None
 
-        self._weights = np.random.randn(self._inputs.shape[1] + 1, n_neurons)     # the plus one for the bias node
+    def initialize_weights(self, shape):
+        if self._weights == None:
+            self._weights = np.random.randn(shape + 1, self.n_neurons)  # the plus one for the bias node
 
     @property
     def weights(self):
@@ -28,5 +31,3 @@ class Dense(Layer):
             result = activation(result)
 
         self._outputs = result
-
-
