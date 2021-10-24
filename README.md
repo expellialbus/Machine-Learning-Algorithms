@@ -50,7 +50,8 @@ Machine-Learning-Algorithms/
 │   │   │   ├── Dense.py
 │   │   │   ├── __init__.py
 │   │   │   └── Layer.py
-│   │   └── __init__.py
+│   │   ├── __init__.py
+│   │   └── Sequential.py
 │   ├── __init__.py
 │   └── Model.py
 ├── Optimizers
@@ -72,6 +73,6 @@ Machine-Learning-Algorithms/
 ├── LICENSE
 ├── main.py
 └── README.md
-
-7 directories, 63 files
 ```
+
+7 directories, 64 files
