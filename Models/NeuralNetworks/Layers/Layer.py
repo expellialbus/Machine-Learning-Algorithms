@@ -1,11 +1,10 @@
-from abc import ABC, abstractmethod
-import numpy as np
+from abc import ABC
 
 class Layer(ABC):
     def __init__(self, n_neurons, activation):
         self._n_neurons = n_neurons
         self._activation = activation
-        self._inputs = np.random.rand(5, 1)
+        self._inputs = None
         self._outputs = None
 
     @property
@@ -39,7 +38,3 @@ class Layer(ABC):
     @outputs.setter
     def outputs(self, value):
         self._outputs = value
-
-    @abstractmethod
-    def forward(self):
-        pass
