@@ -21,19 +21,14 @@ for color, dim in zip(("blue", "green", "red"), range(X_train.shape[1])):
 plt.show()
 """
 
-from Optimizers import AdaMax
-from Models import LinearRegression
-from Losses import RMdSPE
 from Models.NeuralNetworks import Layers
+from Models.NeuralNetworks import Sequential
 
-lin_reg = LinearRegression(2000, AdaMax(), RMdSPE())
-lin_reg(X_train, y_train)
-predictions = lin_reg.inference(X_test)
 
-print("#-------------------- Parameters ------------------------#")
-print(lin_reg.parameters)
-
-print("#---------------------- Losses --------------------------#")
-print(RMdSPE()(y_test, predictions))
-
-Layers.Dense(5, "relu").forward()
+model = Sequential()
+model.add(Layers.Dense(5, "relu"))
+model.add(Layers.Dense(10, "relu"))
+model.call(X_train, y_train)
+print(model.layers[1].inputs.shape)
+print(model.layers[0].inputs.shape)
+print(model.layers[0].outputs.shape)
