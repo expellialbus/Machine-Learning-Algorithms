@@ -8,7 +8,7 @@ class Optimizer(ABC):
     def call(self, loss, parameters, data, labels):
         pass
 
-    def _partial_derivative(self, loss, parameters, data, labels):
+    def partial_derivative(self, loss, parameters, data, labels):
         gradients = list()
         for index in range(parameters.shape[0]):
             gradient = self.__helper_derivative(loss, index, parameters, data, labels)
@@ -21,3 +21,10 @@ class Optimizer(ABC):
             parameters[index] = x
             return loss(parameters, data, labels)
         return derivative(wraps, parameters[index])
+
+    def calculate_delta(self, activation, inputs):
+        outputs = list()
+        for item in inputs:
+            outputs.append(derivative(activation, item))
+
+        return np.array(outputs)
