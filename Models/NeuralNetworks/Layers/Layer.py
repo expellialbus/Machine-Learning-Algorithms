@@ -1,4 +1,4 @@
-from abc import ABC
+from abc import ABC, abstractmethod
 
 class Layer(ABC):
     def __init__(self, n_neurons, activation):
@@ -38,3 +38,11 @@ class Layer(ABC):
     @outputs.setter
     def outputs(self, value):
         self._outputs = value
+
+    @abstractmethod
+    def forward(self):
+        pass
+
+    @abstractmethod
+    def backward(self, optimizer, delta):
+        pass
