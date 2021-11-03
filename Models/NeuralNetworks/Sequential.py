@@ -1,4 +1,6 @@
 from Models.NeuralNetworks.Layers import Layer
+from Losses import get_loss
+from Optimizers import get_optimizer
 
 class Sequential(Layer):
     def __init__(self):
@@ -12,8 +14,11 @@ class Sequential(Layer):
         self.layers.append(layer)
 
     def build(self, loss, optimizer):
-        self.__loss = loss
-        self.__optimizer = optimizer
+        self.__loss = get_loss(loss)
+        self.__optimizer = get_optimizer(optimizer)
+
+        for layer in self.layers:
+            layer.optimizer = get_optimizer(optimizer)
 
     def call(self, data, labels):
         self.initialize_layers(data.shape[1])
@@ -21,7 +26,8 @@ class Sequential(Layer):
 
         self.forward()
         loss = self.__loss(labels, self.outputs)
-
+        delta = loss * self.__optimizer.calculate_delta(self.layers[-1].activation, self.layers[-1].outputs)
+        self.backward(delta)
 
     def initialize_layers(self, shape):
         for layer in self.layers:
@@ -37,5 +43,6 @@ class Sequential(Layer):
 
         self.outputs = data
 
-    def backward(self, optimizer, delta):
-        pass
+    def backward(self, delta):
+        for layer in self.layers:
+            layer.backward(delta)

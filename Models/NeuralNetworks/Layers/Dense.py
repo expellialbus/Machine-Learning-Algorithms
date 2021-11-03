@@ -1,7 +1,7 @@
 import numpy as np
 
 from ..Layers import Layer
-from Activations import Activation
+from Activations import get_activation
 
 class Dense(Layer):
     def __init__(self, n_neurons, activation=None):
@@ -26,8 +26,11 @@ class Dense(Layer):
         result = X.dot(self._weights)
 
         if self.activation:
-            activation = Activation.get_activation(self._activation)
+            self._activation = get_activation(self._activation)
 
-            result = activation(result)
+            result = self._activation(result)
 
         self._outputs = result
+
+    def backward(self, delta):
+        self._weights = self._outputs.T.dot()
