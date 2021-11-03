@@ -6,6 +6,7 @@ class Layer(ABC):
         self._activation = activation
         self._inputs = None
         self._outputs = None
+        self._optimizer = None
 
     @property
     def n_neurons(self):
@@ -39,10 +40,18 @@ class Layer(ABC):
     def outputs(self, value):
         self._outputs = value
 
+    @property
+    def optimizer(self):
+        return self._optimizer
+
+    @optimizer.setter
+    def optimizer(self, value):
+        self._optimizer = value
+
     @abstractmethod
     def forward(self):
         pass
 
     @abstractmethod
-    def backward(self, optimizer, delta):
+    def backward(self, delta):
         pass
