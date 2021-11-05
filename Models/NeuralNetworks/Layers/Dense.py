@@ -33,4 +33,4 @@ class Dense(Layer):
         self._outputs = result
 
     def backward(self, delta):
-        self._weights = self._outputs.T.dot()
+        self._weights -= self._optimizer(self._outputs.T.dot(delta))

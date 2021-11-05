@@ -7,15 +7,13 @@ class Sequential(Layer):
         self.layers = list()
 
         self.__loss = None
-        self.__optimizer = None
-
 
     def add(self, layer):
         self.layers.append(layer)
 
     def build(self, loss, optimizer):
         self.__loss = get_loss(loss)
-        self.__optimizer = get_optimizer(optimizer)
+        self._optimizer = get_optimizer(optimizer)
 
         for layer in self.layers:
             layer.optimizer = get_optimizer(optimizer)
@@ -26,7 +24,7 @@ class Sequential(Layer):
 
         self.forward()
         loss = self.__loss(labels, self.outputs)
-        delta = loss * self.__optimizer.calculate_delta(self.layers[-1].activation, self.layers[-1].outputs)
+        delta = loss * self._optimizer.calculate_delta(self.layers[-1].activation, self.layers[-1].outputs)
         self.backward(delta)
 
     def initialize_layers(self, shape):
@@ -44,5 +42,8 @@ class Sequential(Layer):
         self.outputs = data
 
     def backward(self, delta):
-        for layer in self.layers:
-            layer.backward(delta)
+        self.layers[-1].backward(delta)
+        for layer in range(len(self.layers) - 2, 0, -1):
+            delta = delta.dot(self.layers[layer].weights.T)
+            delta *= self._optimizer.calculate_delta(self.layers[layer].activation, self.layers[layer].outputs)
+            self.layers[layer].backward(delta)
