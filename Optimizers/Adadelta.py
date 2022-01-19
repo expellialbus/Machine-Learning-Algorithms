@@ -38,17 +38,16 @@ class Adadelta(Optimizer):
     def __update_s(self, gradients):
         self.__s = (self.__beta * self.__s) + ((1 - self.__beta) * np.power(gradients, 2))
 
-    def call(self, loss, parameters, data, labels):
-        gradients = self._partial_derivative(loss, parameters, data, labels)
+    def call(self, gradients, **kwargs):
         self.__update_s(gradients)
 
         new_parameters = (np.sqrt(self.__delta + self.__epsilon) / np.sqrt(self.__s + self.__epsilon)) * gradients
 
-        delta_parameters = self.__update_parameters(parameters)
+        delta_parameters = self.__update_parameters(kwargs["parameters"])
         self.__update_delta(delta_parameters)
 
         return new_parameters
 
-    def __call__(self, loss, parameters, data, labels):
-        return self.call(loss, parameters, data, labels)
+    def __call__(self, gradients, **kwargs):
+        return self.call(gradients, **kwargs)
 

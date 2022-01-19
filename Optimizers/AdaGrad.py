@@ -39,16 +39,15 @@ class AdaGrad(Optimizer):
     def __update_cumulative_sum(self, gradients):
         self.__cumulative_sum += np.power(gradients, 2)
 
-    def call(self, loss, parameters, data, labels):
-        gradients = self._partial_derivative(loss, parameters, data, labels)
+    def call(self, gradients, **kwargs):
         self.__update_cumulative_sum(gradients)
 
         new_parameters = (self.__learning_rate / np.sqrt(self.__cumulative_sum + self.__epsilon)) * gradients
 
         if self.__decrease_learning_rate:
-            self.__learning_rate = self.__learning_schedule((1 / (self.__learning_rate + 1)) * data.shape[0])
+            self.__learning_rate = self.__learning_schedule((1 / (self.__learning_rate + 1)) * gradients.shape[0])
 
         return new_parameters
 
-    def __call__(self, loss, parameters, data, labels):
-        return self.call(loss, parameters, data, labels)
+    def __call__(self, gradients, **kwargs):
+        return self.call(gradients, **kwargs)

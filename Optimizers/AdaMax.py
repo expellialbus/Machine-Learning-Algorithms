@@ -45,23 +45,20 @@ class AdaMax(Optimizer):
         return self.__velocity / (1 - self.__beta_one)
 
     def __update_norm_of_gradients(self, gradients):
-        if type(self.__norm_of_gradients) == int:
-            self.__norm_of_gradients = np.array(0).repeat(gradients.shape[0]).reshape(-1, 1)
+        self.__norm_of_gradients = np.array(0).repeat(gradients.shape[0]).reshape(-1, 1)
 
-        self.__norm_of_gradients = np.maximum((self.__beta_two * self.__norm_of_gradients), np.abs(gradients))
+        self.__norm_of_gradients = np.maximum((self.__beta_two * self.__norm_of_gradients), np.abs(gradients)) # vanishing gradients problem
 
-    def call(self, loss, parameters, data, labels):
-        gradients = self._partial_derivative(loss, parameters, data, labels)
-
+    def call(self, gradients, **kwargs):
         velocity = self.__update_velocity(gradients)
         self.__update_norm_of_gradients(gradients)
 
         new_parameters = (self.__learning_rate / self.__norm_of_gradients) * velocity
 
         if self.__decrease_learning_rate:
-            self.__learning_rate = self.__learning_schedule((1 / (self.__learning_rate + 1)) * data.shape[0])
+            self.__learning_rate = self.__learning_schedule((1 / (self.__learning_rate + 1)) * gradients.shape[0])
 
         return new_parameters
 
-    def __call__(self, loss, parameters, data, labels):
-        return self.call(loss, parameters, data, labels)
+    def __call__(self, gradients, **kwargs):
+        return self.call(gradients, **kwargs)

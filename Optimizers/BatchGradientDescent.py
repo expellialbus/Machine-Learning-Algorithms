@@ -24,15 +24,14 @@ class BatchGradientDescent(Optimizer):
     def __learning_schedule(self, t):
         return 1 / t
     
-    def call(self, loss, parameters, data, labels):
-        gradients = self._partial_derivative(loss, parameters, data, labels)
+    def call(self, gradients, **kwargs):
         new_parameters = self.__learning_rate * gradients
         
         if self.__decrease_learning_rate:
-            self.__learning_rate = self.__learning_schedule((1 / (self.__learning_rate + 1)) * data.shape[0])
+            self.__learning_rate = self.__learning_schedule((1 / (self.__learning_rate + 1)) * gradients.shape[0])
 
         return new_parameters
 
-    def __call__(self, loss, parameters, data, labels):
-        return self.call(loss, parameters, data, labels)
+    def __call__(self, gradients, **kwargs):
+        return self.call(gradients, **kwargs)
 
