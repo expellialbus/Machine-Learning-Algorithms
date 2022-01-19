@@ -8,10 +8,12 @@ class LinearRegression(Model):
         self._initialize_model(data, labels)
 
         for step in range(self._training_steps):
-            self._parameters -= self._optimizer(self.calculate_loss, 
-                                                self._parameters, 
-                                                self._data, 
+            gradients = self._optimizer.partial_derivative(self.calculate_loss,
+                                                self._parameters,
+                                                self._data,
                                                 self._labels)
+
+            self._parameters -= self._optimizer(gradients, parameters=self.parameters)
 
     def inference(self, data):
         data = self._adjust_data(data)
