@@ -37,9 +37,11 @@ class NesterovAcceleratedGradient(Optimizer):
     def __update_velocity(self, gradients):
         self.__velocity = (self.__beta * self.__velocity) + ((1 - self.__beta) * gradients)
 
-    def call(self, loss, parameters, data, labels):
-        projected_parameters = parameters - (self.__learning_rate * self.__velocity)
-        gradients = self._partial_derivative(loss, projected_parameters, data, labels)
+    def call(self, gradients, **kwargs):
+        # should not be used. It will be updated
+
+        # projected_parameters = parameters - (self.__learning_rate * self.__velocity)
+        # gradients = self._partial_derivative(loss, projected_parameters, data, labels)
 
         self.__update_velocity(gradients)
 
@@ -50,5 +52,5 @@ class NesterovAcceleratedGradient(Optimizer):
 
         return new_parameters
 
-    def __call__(self, loss, parameters, data, labels):
-        return self.call(loss, parameters, data, labels)
+    def __call__(self, gradients, **kwargs):
+        return self.call(gradients, **kwargs)
