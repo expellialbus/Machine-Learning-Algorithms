@@ -26,18 +26,20 @@ class StochasticGradientDescent(Optimizer):
     def __learning_schedule(self, t):
         return 1 / t
         
-    def call(self, loss, parameters, data, labels):
-        random_index = np.random.randint(data.shape[0])
-        x_i = data[random_index: random_index + 1]        # it returns the data as an array with one item
-        y_i = labels[random_index: random_index + 1]      # simply does the same thing
+    def call(self, gradients, **kwargs):
+        # will be updated
 
-        gradients = self._partial_derivative(loss, parameters, x_i, y_i)
+        # random_index = np.random.randint(data.shape[0])
+        # x_i = data[random_index: random_index + 1]        # it returns the data as an array with one item
+        # y_i = labels[random_index: random_index + 1]      # simply does the same thing
+        #
+        # gradients = self._partial_derivative(loss, parameters, x_i, y_i)
         new_parameters = self.__learning_rate * gradients
 
         if self.__decrease_learning_rate:
-            self.__learning_rate = self.__learning_schedule((1 / (self.__learning_rate + 1)) * data.shape[0])
+            self.__learning_rate = self.__learning_schedule((1 / (self.__learning_rate + 1)) * gradients.shape[0])
 
         return new_parameters
 
-    def __call__(self, loss, parameters, data, labels):
-        return self.call(loss, parameters, data, labels)
+    def __call__(self, gradients, **kwargs):
+        return self.call(gradients, **kwargs)

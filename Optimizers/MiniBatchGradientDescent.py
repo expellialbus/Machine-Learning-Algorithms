@@ -36,18 +36,20 @@ class MiniBatchGradientDescent(Optimizer):
     def __learning_schedule(self, t):
         return 1 / t
 
-    def call(self, loss, parameters, data, labels):
-        random_index = np.random.randint(data.shape[0] - self.__batch_size)
-        x_batch = data[random_index: random_index + self.__batch_size]
-        y_batch = labels[random_index: random_index + self.__batch_size]
+    def call(self, gradients, **kwargs):
+        # will be updated
 
-        gradients = self._partial_derivative(loss, parameters, x_batch, y_batch)
+        # random_index = np.random.randint(data.shape[0] - self.__batch_size)
+        # x_batch = data[random_index: random_index + self.__batch_size]
+        # y_batch = labels[random_index: random_index + self.__batch_size]
+        #
+        # gradients = self._partial_derivative(loss, parameters, x_batch, y_batch)
         new_parameters = self.__learning_rate * gradients
 
         if self.__decrease_learning_rate:
-            self.__learning_rate = self.__learning_schedule((1 / (self.__learning_rate + 1)) * data.shape[0])
+            self.__learning_rate = self.__learning_schedule((1 / (self.__learning_rate + 1)) * gradients.shape[0])
 
         return new_parameters
 
-    def __call__(self, loss, parameters, data, labels):
-        return self.call(loss, parameters, data, labels)
+    def __call__(self, gradients, **kwargs):
+        return self.call(gradients, **kwargs)
